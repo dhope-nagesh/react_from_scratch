@@ -9,7 +9,7 @@ npm install
 npm run start
 ```
 
-#### Run development server
+#### Create production build
 ```
 npm run build
 ```
