@@ -18,16 +18,18 @@ export default class SearchBox extends Component {
     }
     render() {
         return (
-            <div>
-                <input className="search-box" type="text" placeholder="Type to search users" 
-                onChange={this.updateQuery}
-                />
-                <button onClick={() => {
-                    this.props.handleChange(this.state.query)
-                }}>
-                    Search
+            <div className="search-box-container">
+                
+                    <input className="search-box" type="text" placeholder="Type to search users"
+                        onChange={this.updateQuery}
+                    />
+                    <button onClick={() => {
+                        this.props.handleChange(this.state.query)
+                    }} className="btn-search">
+                        Search
                 </button>
             </div>
+
         )
     }
 }

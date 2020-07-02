@@ -1,0 +1,12 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 650px;
+    align-items: center;
+    .list-container {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+}

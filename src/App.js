@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import GithubUsers from './GithubUsers';
-
+import './App.scss';
 
 // props
 // state
@@ -13,7 +13,7 @@ export default class App extends Component {
   }
   render() {
     return (
-      <div>
+      <div className="main-container">
          <GithubUsers />
       </div>
     )

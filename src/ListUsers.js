@@ -5,11 +5,11 @@ export default class ListUsers extends Component {
     render() {
         const { users } = this.props;
         const usersList = users.map(user => {
-            return <User avatar={user.avatar_url} username={user.login} />
+            return <User url={user.html_url} avatar={user.avatar_url} username={user.login} />
         });
         
         return (
-            <div>
+            <div className="list-container">
                 {
                     usersList
                 }

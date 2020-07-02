@@ -1,8 +1,11 @@
 import React, { Component } from 'react'
 import SearchBox from './SearchBox';
-import ListUsers from './ListUsers'
+import ListUsers from './ListUsers';
+import Loading from './Loading';
 
 import axios from 'axios';
+
+import './GithubUsers.scss';
 
 export default class GithubUsers extends Component {
     constructor(props) {
@@ -10,29 +13,44 @@ export default class GithubUsers extends Component {
         this.state = {
             users: [
 
-            ]
+            ],
+            isLoading: false
         }
         this.handleChange = this.handleChange.bind(this);
     }
 
     handleChange(q) {
+        let url = 'https://api.github.com/users';
+        if(q) {
+            url = `https://api.github.com/search/users?q=${q}`;
+        }
 
-        const url = `https://api.github.com/search/users?q=${q}`
-
-        axios(url).then(r => {
-            this.setState({
-                users: r.data.items
+        this.setState({
+            isLoading: true
+        }, () => {
+            axios(url).then(r => {
+                let users = q ? r.data.items: r.data;
+                this.setState({
+                    users,
+                    isLoading: false
+                })
             })
         })
+    }
+
+    componentDidMount() {
+        this.handleChange();
     }
 
     render() {
 
         return (
-            <div>
+            <div className="container">
                 <h1>Search Github Users</h1>
                 <SearchBox handleChange={this.handleChange} />
-                <ListUsers users={this.state.users} />
+                {
+                    this.state.isLoading ? <Loading />: <ListUsers users={this.state.users} />
+                }
             </div>
         )
     }
