@@ -4,8 +4,8 @@ import User from './User';
 export default class ListUsers extends Component {
     render() {
         const { users } = this.props;
-        const usersList = users.map(user => {
-            return <User url={user.html_url} avatar={user.avatar_url} username={user.login} />
+        const usersList = users.map((user, index) => {
+            return <User url={user.html_url} avatar={user.avatar_url} username={user.login} key={index} />
         });
         
         return (

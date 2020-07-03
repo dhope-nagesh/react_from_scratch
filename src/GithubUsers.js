@@ -32,7 +32,8 @@ export default class GithubUsers extends Component {
                 let users = q ? r.data.items: r.data;
                 this.setState({
                     users,
-                    isLoading: false
+                    isLoading: false,
+                    selectedUser: {}
                 })
             })
         })
@@ -51,6 +52,7 @@ export default class GithubUsers extends Component {
                 {
                     this.state.isLoading ? <Loading />: <ListUsers users={this.state.users} />
                 }
+                
             </div>
         )
     }
